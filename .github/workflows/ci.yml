@@ -34,6 +34,9 @@ jobs:
             echo "No tests configured — skipping"
           fi
 
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
       - name: Authenticate with Expo
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
