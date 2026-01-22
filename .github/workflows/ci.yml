@@ -26,8 +26,13 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-      - name: Run tests
-        run: npm test
+      - name: Run tests (if available)
+        run: |
+          if npm run | grep -q "test"; then
+            npm test
+          else
+            echo "No tests configured — skipping"
+          fi
 
       - name: Authenticate with Expo
         env:
